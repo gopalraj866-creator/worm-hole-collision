@@ -1,0 +1,141 @@
+name: Render documentary
+
+# Renders "When Wormholes Collide" (8:00, 30 fps) at 1080p and/or 4K.
+# The film is split into chunks that render in parallel (one matrix job each), then joined and muxed with audio.
+# GitHub-hosted runners have no GPU: WebGL runs on SwiftShader (software). Public repositories get free minutes;
+# private repositories will use many runner-minutes at 4K (see README).
+
+on:
+  workflow_dispatch:
+    inputs:
+      quality:
+        description: "Which output(s) to render"
+        type: choice
+        options: [both, 1080p, 4k]
+        default: both
+      chunk_seconds_1080p:
+        description: "Seconds of film per 1080p job"
+        default: "40"
+      chunk_seconds_4k:
+        description: "Seconds of film per 4K job"
+        default: "20"
+      voice:
+        description: "Narration voice (edge-tts)"
+        default: "en-GB-RyanNeural"
+      create_release:
+        description: "Also publish the MP4 files as a GitHub Release"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.p.outputs.matrix }}
+      presets: ${{ steps.p.outputs.presets }}
+    steps:
+      - id: p
+        shell: python
+        run: |
+          import json, math, os
+          q = "${{ inputs.quality }}"
+          chunk = {"1080p": int("${{ inputs.chunk_seconds_1080p }}"), "4k": int("${{ inputs.chunk_seconds_4k }}")}
+          presets = ["1080p", "4k"] if q == "both" else [q]
+          inc = []
+          for pr in presets:
+              n = math.ceil(480 / chunk[pr])
+              for i in range(n):
+                  inc.append({"preset": pr, "idx": i, "start": i * chunk[pr], "end": min(480, (i + 1) * chunk[pr])})
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write("matrix=" + json.dumps({"include": inc}) + "\n")
+              f.write("presets=" + json.dumps(presets) + "\n")
+
+  audio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Install audio tools
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y ffmpeg espeak-ng
+          pip install numpy scipy edge-tts
+      - name: Build narration + score
+        run: python audio/build_audio.py --out build/audio --voice "${{ inputs.voice }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audio
+          path: |
+            build/audio/audio.m4a
+            build/audio/timings.json
+
+  render:
+    needs: [plan, audio]
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    name: render ${{ matrix.preset }} #${{ matrix.idx }} (${{ matrix.start }}-${{ matrix.end }}s)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm }
+      - name: Install ffmpeg
+        run: sudo apt-get update -y && sudo apt-get install -y ffmpeg
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with: { name: audio, path: build/audio }
+      - name: Use real narration timings for subtitles
+        run: cp build/audio/timings.json public/data/timings.json
+      - name: Render chunk
+        run: |
+          node render/render.mjs --preset ${{ matrix.preset }} --start ${{ matrix.start }} --end ${{ matrix.end }} \
+            --out out/chunk_${{ matrix.preset }}_$(printf '%03d' ${{ matrix.idx }}).mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chunk-${{ matrix.preset }}-${{ matrix.idx }}
+          path: out/*.mp4
+          retention-days: 3
+
+  assemble:
+    needs: [plan, render]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        preset: ${{ fromJSON(needs.plan.outputs.presets) }}
+    name: assemble ${{ matrix.preset }}
+    steps:
+      - name: Install ffmpeg
+        run: sudo apt-get update -y && sudo apt-get install -y ffmpeg
+      - uses: actions/download-artifact@v4
+        with: { pattern: "chunk-${{ matrix.preset }}-*", path: chunks, merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: audio, path: audio }
+      - name: Join chunks and add audio
+        run: |
+          ls chunks | sort > list.txt
+          sed -i "s#^#file 'chunks/#; s#\$#'#" list.txt
+          cat list.txt
+          ffmpeg -y -f concat -safe 0 -i list.txt -c copy video.mp4
+          ffmpeg -y -i video.mp4 -i audio/audio.m4a -map 0:v -map 1:a -c copy -shortest -movflags +faststart \
+            "When_Wormholes_Collide_${{ matrix.preset }}_30fps.mp4"
+          ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate -of default=nw=1 "When_Wormholes_Collide_${{ matrix.preset }}_30fps.mp4"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: film-${{ matrix.preset }}
+          path: When_Wormholes_Collide_${{ matrix.preset }}_30fps.mp4
+          retention-days: 14
+          compression-level: 0
+      - name: Publish release
+        if: ${{ inputs.create_release }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: film-${{ github.run_number }}
+          name: When Wormholes Collide (run ${{ github.run_number }})
+          files: When_Wormholes_Collide_${{ matrix.preset }}_30fps.mp4
