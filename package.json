@@ -1,0 +1,18 @@
+{
+  "name": "wormhole-collision-documentary",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "What Might Happen When Two Wormholes Collide - 8 minute Three.js/WebGL documentary renderer (Technical Talk India)",
+  "scripts": {
+    "preview": "node render/serve.mjs",
+    "render:1080": "node render/render.mjs --preset 1080p",
+    "render:4k": "node render/render.mjs --preset 4k"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "puppeteer": "23.11.1",
+    "three": "0.170.0"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "title": "WHEN WORMHOLES COLLIDE",
+  "channel": "TECHNICAL TALK INDIA",
+  "duration": 480,
+  "fps": 30,
+  "sources": [
+    "ScienceAlert, \"Physicists Simulated What Might Happen When Two Wormholes Collide, And Things Got Weird\", Michelle Starr, 17 Oct 2026",
+    "N. M. Shirokov & I. Nachevsky, preprint on binary Ellis-Bronnikov wormholes (arXiv:2610.13206, not yet peer-reviewed)",
+    "N. M. Shirokov, \"Wormhole Dynamics: Nonlinear Collapse and Gravitational-Wave Emission\", arXiv:2604.00071"
+  ],
+  "chapters": [
+    { "t0": 0,   "t1": 78,  "num": "01", "title": "RIPPLES IN SPACETIME" },
+    { "t0": 78,  "t1": 140, "num": "02", "title": "WHAT IS A WORMHOLE?" },
+    { "t0": 140, "t1": 198, "num": "03", "title": "THE ELLIS–BRONNIKOV WORMHOLE" },
+    { "t0": 198, "t1": 250, "num": "04", "title": "THE SIMULATION" },
+    { "t0": 250, "t1": 328, "num": "05", "title": "WHEN THEY MEET" },
+    { "t0": 328, "t1": 382, "num": "06", "title": "THE SHRINKING HORIZON" },
+    { "t0": 382, "t1": 436, "num": "07", "title": "A DIFFERENT KIND OF SIGNAL" },
+    { "t0": 436, "t1": 480, "num": "08", "title": "THE CATCH" }
+  ],
+  "narration": [
+    { "id": "n01", "t": 2.0,   "text": "Like the surface of an ocean, the fabric of the universe is never still." },
+    { "id": "n02", "t": 9.0,   "text": "Gravitational waves, ripples in spacetime itself, are rolling across the cosmos right now." },
+    { "id": "n03", "t": 18.0,  "text": "We have detected more than a hundred of them. And most trace back to the same kind of event: two black holes, colliding." },
+    { "id": "n04", "t": 32.0,  "text": "As two black holes spiral toward each other, their motion stirs spacetime into waves that grow stronger, and faster. A rising signal that physicists call a chirp." },
+    { "id": "n05", "t": 51.0,  "text": "And then, in an instant, they merge. And the universe rings." },
+    { "id": "n06", "t": 62.0,  "text": "But here is a question worth asking. How do we know that every collision we attribute to black holes, is really what it looks like?" },
+
+    { "id": "n07", "t": 80.0,  "text": "What if something else out there can make the universe sing?" },
+    { "id": "n08", "t": 86.5,  "text": "Something that sounds like science fiction. A wormhole." },
+    { "id": "n09", "t": 93.0,  "text": "But wormholes are not just a movie idea. They emerge as a mathematical possibility from Einstein's general relativity, which describes gravity as the curvature of spacetime." },
+    { "id": "n10", "t": 107.0, "text": "In theory, spacetime could be curved so that two distant regions are joined by a tunnel. A throat." },
+    { "id": "n11", "t": 116.5, "text": "The most famous example is the Einstein-Rosen bridge. But it is non-traversable. Nothing could make it through." },
+    { "id": "n12", "t": 127.5, "text": "Whether a structure like this could really exist in our universe, remains an open question." },
+
+    { "id": "n13", "t": 141.0, "text": "A different model is the Ellis-Bronnikov wormhole. This one is traversable. In principle, something could pass through." },
+    { "id": "n14", "t": 151.0, "text": "What holds it open is a hypothetical phantom scalar field, with unusual negative-energy properties that stop the throat from pinching shut." },
+    { "id": "n15", "t": 163.0, "text": "But traversable does not mean stable." },
+    { "id": "n16", "t": 166.5, "text": "Even a small disturbance can upset the balance. The throat may collapse, forming a black hole. Or it may begin to expand, in a runaway process called inflation." },
+    { "id": "n17", "t": 181.0, "text": "So what happens when two of these volatile structures cross paths?" },
+    { "id": "n18", "t": 188.5, "text": "Two physicists set out to find out." },
+
+    { "id": "n19", "t": 199.0, "text": "A new preprint, by physicist Nikita Shirokov of the Moscow Institute of Physics and Technology, and machine learning engineer Ilya Nachevsky of the Higher School of Economics, ran three-dimensional simulations of pairs of Ellis-Bronnikov wormholes." },
+    { "id": "n20", "t": 217.0, "text": "They varied how far apart the wormholes began, the paths they took, and the properties of the phantom fields holding them open." },
+    { "id": "n21", "t": 228.5, "text": "A caution before we go on. This work has not yet been peer reviewed, and wormholes themselves remain hypothetical." },
+    { "id": "n22", "t": 239.5, "text": "The results were surprisingly diverse." },
+    { "id": "n23", "t": 243.5, "text": "And most of them were extremely strange." },
+
+    { "id": "n24", "t": 251.0, "text": "Depending on the setup, the wormholes could attract one another, or repel." },
+    { "id": "n25", "t": 268.0, "text": "Some passed close enough to interact, then flew apart, their throats expanding dramatically in the process." },
+    { "id": "n26", "t": 285.0, "text": "Others plunged straight toward each other." },
+    { "id": "n27", "t": 290.5, "text": "But instead of merging into one larger wormhole, something far stranger happened." },
+    { "id": "n28", "t": 300.0, "text": "A common apparent horizon, similar to the event horizon of a black hole, formed around both throats, enclosing them inside a developing black hole." },
+    { "id": "n29", "t": 313.0, "text": "And then the horizon did something that black hole horizons are not supposed to do." },
+    { "id": "n30", "t": 322.5, "text": "It shrank." },
+
+    { "id": "n31", "t": 330.0, "text": "As the phantom field fell into the collapsing region, the horizon lost about twenty eight percent of its area." },
+    { "id": "n32", "t": 340.0, "text": "Stephen Hawking's area theorem, from 1971, says the area of a black hole's event horizon can only increase, or stay the same." },
+    { "id": "n33", "t": 350.5, "text": "But that theorem relies on assumptions about how energy behaves. And the negative-energy phantom field violates them." },
+    { "id": "n34", "t": 360.5, "text": "So there is no contradiction. The simulation tracks an apparent horizon, not an event horizon, and a field the theorem does not cover." },
+    { "id": "n35", "t": 372.5, "text": "Still, a horizon that shrinks is a striking result." },
+
+    { "id": "n36", "t": 383.0, "text": "So what does this have to do with gravitational waves?" },
+    { "id": "n37", "t": 388.0, "text": "Wormholes like these should also generate gravitational waves as they move and interact. But not the same waves that black holes make." },
+    { "id": "n38", "t": 398.5, "text": "A pair of spiraling black holes sings a chirp, rising in strength and pitch as the two draw closer." },
+    { "id": "n39", "t": 407.5, "text": "The wormhole encounters produced something different. Short, sharp bursts." },
+    { "id": "n40", "t": 413.5, "text": "Their shape and strength depended on whether the wormholes plunged together or merely grazed each other. And some of the closest flybys produced particularly strong bursts, even with no common horizon." },
+    { "id": "n41", "t": 428.5, "text": "A burst without a chirp is not proof of wormholes, though. Black holes can produce those too." },
+
+    { "id": "n42", "t": 438.0, "text": "One unusual signal, GW190521, has been studied as a possible sign of exotic physics. These simulations do not link it to a wormhole, but they show why mapping possible signatures matters." },
+    { "id": "n43", "t": 452.0, "text": "There is a catch. Wormhole signals from the early universe would be stretched by cosmic expansion to frequencies far below what LIGO or the planned LISA mission can detect." },
+    { "id": "n44", "t": 466.0, "text": "Still, the universe has surprised us before. If we ever record such a signal, we will know better what we are looking at." }
+  ],
+  "cards": [
+    { "t0": 3,   "t1": 11,  "pos": "tl", "kicker": "GRAVITATIONAL WAVES", "text": "Ripples in the fabric of spacetime" },
+    { "t0": 20,  "t1": 30,  "pos": "tl", "kicker": "DETECTED SO FAR", "big": "100+", "text": "mostly from colliding black holes" },
+    { "t0": 36,  "t1": 49,  "pos": "tl", "kicker": "THE CHIRP", "text": "Stronger and higher in frequency as the two objects draw closer" },
+    { "t0": 63,  "t1": 76,  "pos": "tl", "kicker": "THE QUESTION", "text": "Is every collision really what it looks like?" },
+
+    { "t0": 80,  "t1": 90,  "pos": "tl", "kicker": "WHAT IF…", "text": "Something else could make the Universe sing?" },
+    { "t0": 95,  "t1": 106, "pos": "tl", "kicker": "GENERAL RELATIVITY", "text": "Gravity as the curvature of spacetime" },
+    { "t0": 108, "t1": 116, "pos": "tl", "kicker": "THE THROAT", "text": "A tunnel joining two distant regions" },
+    { "t0": 118, "t1": 127, "pos": "tl", "kicker": "EINSTEIN–ROSEN BRIDGE", "text": "Non-traversable" },
+    { "t0": 129, "t1": 138, "pos": "tl", "kicker": "OPEN QUESTION", "text": "Could such a structure exist in our Universe?" },
+
+    { "t0": 142, "t1": 150, "pos": "tl", "kicker": "ELLIS–BRONNIKOV", "text": "A traversable wormhole" },
+    { "t0": 152, "t1": 162, "pos": "tl", "kicker": "HELD OPEN BY", "text": "A hypothetical phantom scalar field with negative-energy properties" },
+    { "t0": 163, "t1": 167, "pos": "c",  "big": "TRAVERSABLE ≠ STABLE" },
+    { "t0": 168, "t1": 175, "pos": "tl", "kicker": "POSSIBLE FATE 1", "text": "Collapse into a black hole" },
+    { "t0": 178, "t1": 186, "pos": "tl", "kicker": "POSSIBLE FATE 2", "text": "Runaway expansion: inflation" },
+
+    { "t0": 200, "t1": 216, "pos": "tl", "kicker": "PREPRINT", "text": "N. M. Shirokov (MIPT)  ·  I. Nachevsky (HSE)" },
+    { "t0": 218, "t1": 227, "pos": "tr", "kicker": "WHAT THEY VARIED", "list": ["Initial separation", "Trajectories", "Phantom-field properties"] },
+    { "t0": 229, "t1": 238, "pos": "tl", "kicker": "NOT YET PEER REVIEWED", "text": "Wormholes remain hypothetical" },
+
+    { "t0": 251, "t1": 266, "pos": "tl", "kicker": "OUTCOME", "text": "Attract — or repel" },
+    { "t0": 268, "t1": 283, "pos": "tl", "kicker": "OUTCOME", "text": "Close flyby: throats expand, then the wormholes fly apart" },
+    { "t0": 285, "t1": 299, "pos": "tl", "kicker": "OUTCOME", "text": "Plunge" },
+    { "t0": 301, "t1": 327, "pos": "tl", "kicker": "OUTCOME", "text": "A common apparent horizon encloses both throats" },
+
+    { "t0": 331, "t1": 339, "pos": "tr", "kicker": "HORIZON AREA", "big": "−28%" },
+    { "t0": 341, "t1": 350, "pos": "tl", "kicker": "HAWKING AREA THEOREM  ·  1971", "text": "A black hole's event-horizon area can only increase or stay the same" },
+    { "t0": 351, "t1": 359, "pos": "tl", "kicker": "THE LOOPHOLE", "text": "Phantom fields violate the theorem's energy assumptions" },
+    { "t0": 361, "t1": 371, "pos": "tl", "kicker": "NO CONTRADICTION", "text": "Apparent horizon, not an event horizon" },
+
+    { "t0": 389, "t1": 398, "pos": "tl", "kicker": "GRAVITATIONAL WAVES", "text": "Wormholes should make them too — but a different kind" },
+    { "t0": 408, "t1": 413, "pos": "tr", "kicker": "WORMHOLE ENCOUNTER", "text": "Short, sharp bursts" },
+    { "t0": 414, "t1": 427, "pos": "tr", "kicker": "SHAPE & STRENGTH DEPEND ON", "list": ["Plunge together", "Merely graze"] },
+    { "t0": 429, "t1": 437, "pos": "tl", "kicker": "BURST ≠ PROOF", "text": "Black holes can produce such signals too" },
+
+    { "t0": 439, "t1": 451, "pos": "tl", "kicker": "GW190521  ·  DETECTED 2019", "text": "Investigated as a possible sign of exotic spacetime physics — not linked to a wormhole by these simulations" },
+    { "t0": 453, "t1": 465, "pos": "tl", "kicker": "THE CATCH", "text": "Early-universe wormhole signals would be stretched to frequencies far below LIGO and LISA" }
+  ],
+  "outro": [
+    { "t0": 469, "t1": 480, "line": "WHAT SHOULD WE EXPLORE NEXT?" },
+    { "t0": 474, "t1": 480, "line": "TECHNICAL TALK INDIA" }
+  ]
+}
